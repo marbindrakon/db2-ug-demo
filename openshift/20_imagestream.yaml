@@ -1,0 +1,8 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: db2-ug-demo
+  namespace: db2-ug-demo
+spec:
+  lookupPolicy:
+    local: false

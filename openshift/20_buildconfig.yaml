@@ -1,0 +1,22 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: demo-build
+  namespace: db2-ug-demo
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: db2-ug-demo:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    type: Binary
+  strategy:
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - type: ConfigChange

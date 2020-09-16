@@ -21,9 +21,8 @@ RUN microdnf install curl ca-certificates ${JAVA_PACKAGE} \
 
 # Configure the JAVA_OPTIONS, you can add -XshowSettings:vm to also display the heap size.
 ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
-COPY db2-vug-demo /src
-WORKDIR /src
-RUN /src/mvnw package && cp target/lib/* /deployments/lib/ && cp target/*-runner.jar /deployments/app.jar
+COPY db2-vug-demo/target/lib/* /deployments/lib/
+COPY db2-vug-demo/target/*-runner.jar /deployments/app.jar
 
 EXPOSE 8080
 USER 1001
